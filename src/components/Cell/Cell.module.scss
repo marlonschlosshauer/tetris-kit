@@ -1,0 +1,20 @@
+.cell {
+			width: 24px;
+			height: 24px;
+			border: 1px solid white;
+}
+
+.filled {
+				background-color: darkblue;
+				border-color: darkblue;
+}
+
+.active {
+				background-color: blue;
+				border-color: blue;
+}
+
+.empty {
+			 background-color: lightblue;
+			 border-color: darkgrey;
+}
