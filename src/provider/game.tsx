@@ -1,4 +1,4 @@
-import { Game } from "@/types/game";
+import { Game as Base } from "@/types/game";
 import {
   ActionDispatch,
   createContext,
@@ -7,18 +7,18 @@ import {
   useContext,
   useReducer,
 } from "react";
-import { Event, reduce } from "./loop";
-import { startGame } from "./logic";
+import { Event, reduce } from "@/lib/loop";
+import { startGame } from "@/lib/logic";
 
-export interface ProviderData extends Game {
+export interface GameData extends Base {
   dispatch: ActionDispatch<[event: Event]>;
 }
 
-export type ProviderProps = Partial<Game>;
+export type GameProps = Partial<Base>;
 
-const Context = createContext({} as ProviderData);
+const Context = createContext({} as GameData);
 
-export const Provider: FC<PropsWithChildren<ProviderProps>> = ({
+export const GameProvider: FC<PropsWithChildren<GameProps>> = ({
   children,
   ...props
 }) => {
@@ -31,4 +31,4 @@ export const Provider: FC<PropsWithChildren<ProviderProps>> = ({
   );
 };
 
-export const useTetris = () => useContext(Context);
+export const useGame = () => useContext(Context);

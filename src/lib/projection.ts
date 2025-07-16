@@ -1,6 +1,5 @@
 import { Active, Cell, CellStatus, Game, Playground } from "@/types/game";
 import { tetrimoni } from "./tetrimoni";
-import { CellProps } from "@/components/Cell/Cell";
 import { bounds } from "./collision";
 
 export const projectActive = (
@@ -37,7 +36,7 @@ export const projectActive = (
 };
 
 export const projectCells = (
-  cells: CellProps[],
+  cells: Cell[],
   playground: Playground,
 ): Cell[][] => {
   const map = Array.from({ length: playground.rows }).map((_, y) =>

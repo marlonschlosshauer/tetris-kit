@@ -1,16 +1,9 @@
-import { Cell as Base } from "@/types/game";
 import styles from "./Cell.module.scss";
 import { FC } from "react";
+import { PropsWithClassName } from "@/types/app";
+import { useCell } from "@/provider/cell";
 
-export type CellProps = Base;
-
-export const Cell: FC<CellProps> = ({ x, y, status }) => {
-  return (
-    <div
-      data-x={x}
-      data-y={y}
-      id={`${x}-${y}`}
-      className={`${styles.cell} ${styles[status]}`}
-    />
-  );
+export const Cell: FC<PropsWithClassName> = ({ className }) => {
+  const { status } = useCell();
+  return <div className={`${styles.cell} ${styles[status]} ${className}`} />;
 };

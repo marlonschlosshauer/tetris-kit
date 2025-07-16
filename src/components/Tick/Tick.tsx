@@ -1,8 +1,8 @@
-import { useTetris } from "@/lib/provider";
+import { useGame } from "@/provider/game";
 import { FC, useEffect } from "react";
 
-export const Beat: FC = () => {
-  const { dispatch } = useTetris();
+export const Tick: FC = () => {
+  const { dispatch } = useGame();
 
   useEffect(() => {
     const interval = setInterval(() => {

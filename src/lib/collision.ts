@@ -1,6 +1,5 @@
 import { Block, Game, Playground } from "@/types/game";
 import { tetrimoni } from "./tetrimoni";
-import { castActive, hasLost } from "./logic";
 
 export const bounds = (y: number, x: number, playground: Playground) => {
   return y < playground.rows && y >= 0 && x < playground.columns && x >= 0;

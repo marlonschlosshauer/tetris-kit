@@ -1,8 +1,8 @@
+import { useGame } from "@/provider/game";
 import { useCallback, useEffect } from "react";
-import { useTetris } from "./provider";
 
 export const useInput = () => {
-  const { dispatch } = useTetris();
+  const { dispatch } = useGame();
 
   const fn = useCallback(
     (e: KeyboardEvent) => {
