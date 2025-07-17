@@ -1,22 +1,19 @@
 import { FC } from "react";
 
 import { Fields } from "@/components/Fields/Fields";
-import { PlaygroundWrapper } from "@/components/PlaygroundWrapper/PlaygroundWrapper";
-import { useVisual } from "@/provider/visual";
+import { useTetris } from "@/provider/tetris";
 
 export const Game: FC = () => {
-  const { components } = useVisual();
-  const { Playground } = components;
+  const { playground, components } = useTetris();
+  const { Playground: Playground } = components;
 
   if (!Playground) {
     return null;
   }
 
   return (
-    <PlaygroundWrapper>
-      <Playground>
-        <Fields />
-      </Playground>
-    </PlaygroundWrapper>
+    <Playground {...playground}>
+      <Fields />
+    </Playground>
   );
 };

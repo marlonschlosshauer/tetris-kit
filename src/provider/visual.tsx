@@ -8,8 +8,8 @@ export interface VisualDataClassNames {
 }
 
 export interface VisualDataComponents {
-  Cell?: FC;
-  Playground?: FC<PropsWithChildren>;
+  Cell?: typeof CellBase;
+  Playground?: typeof PlaygroundBase;
 }
 
 export interface VisualData {
@@ -29,10 +29,13 @@ export const VisualProvider: FC<PropsWithChildren<VisualProps>> = ({
   components,
   ...props
 }) => {
-  const { Playground = PlaygroundBase, Cell = CellBase } = components ?? {};
+  const { Playground: Playground = PlaygroundBase, Cell = CellBase } =
+    components ?? {};
 
   return (
-    <Context.Provider value={{ ...props, components: { Playground, Cell } }}>
+    <Context.Provider
+      value={{ ...props, components: { Playground: Playground, Cell } }}
+    >
       {children}
     </Context.Provider>
   );

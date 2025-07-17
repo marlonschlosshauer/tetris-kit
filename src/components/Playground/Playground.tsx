@@ -1,16 +1,14 @@
 import { FC, PropsWithChildren } from "react";
 import styles from "./Playground.module.scss";
-import { usePlayground } from "@/provider/playground";
+import { Playground as Base } from "@/types/game";
 
-export const Playground: FC<PropsWithChildren> = ({ children }) => {
-  const playground = usePlayground();
+export type PlaygroundProps = Base;
 
-  if (!playground) {
-    return null;
-  }
-
-  const { rows, columns } = playground;
-
+export const Playground: FC<PropsWithChildren<PlaygroundProps>> = ({
+  rows,
+  columns,
+  children,
+}) => {
   if (!rows || !columns) {
     return null;
   }

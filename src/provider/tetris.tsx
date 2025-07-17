@@ -1,24 +1,25 @@
-import { createContext, FC, PropsWithChildren, useContext } from "react";
-import { GameProps, GameProvider } from "./game";
-import { VisualProps, VisualProvider } from "./visual";
+import { FC, PropsWithChildren } from "react";
+import { GameData, GameProps, GameProvider, useGame } from "./game";
+import { useVisual, VisualData, VisualProps, VisualProvider } from "./visual";
 
-export type TetrisData = GameProps & VisualProps;
+export type TetrisProviderData = GameData & VisualData;
 
-export type TetrisProps = GameProps & VisualProps;
+export type TetrisProviderProps = GameProps & VisualProps;
 
-const Context = createContext({} as TetrisData);
-
-export const TetrisProvider: FC<PropsWithChildren<TetrisProps>> = ({
+export const TetrisProvider: FC<PropsWithChildren<TetrisProviderProps>> = ({
   children,
   ...props
 }) => {
   return (
-    <Context.Provider value={props}>
-      <VisualProvider {...props}>
-        <GameProvider {...props}>{children}</GameProvider>
-      </VisualProvider>
-    </Context.Provider>
+    <VisualProvider {...props}>
+      <GameProvider {...props}>{children}</GameProvider>
+    </VisualProvider>
   );
 };
 
-export const useTetris = () => useContext(Context);
+export const useTetris = () => {
+  const visual = useVisual();
+  const game = useGame();
+
+  return { ...visual, ...game };
+};

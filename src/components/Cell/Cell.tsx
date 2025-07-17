@@ -1,9 +1,13 @@
 import styles from "./Cell.module.scss";
 import { FC } from "react";
 import { PropsWithClassName } from "@/types/app";
-import { useCell } from "@/provider/cell";
+import { Cell as Base } from "@/types/game";
 
-export const Cell: FC<PropsWithClassName> = ({ className }) => {
-  const { status } = useCell();
+export type CellProps = Base;
+
+export const Cell: FC<PropsWithClassName<CellProps>> = ({
+  status,
+  className,
+}) => {
   return <div className={`${styles.cell} ${styles[status]} ${className}`} />;
 };

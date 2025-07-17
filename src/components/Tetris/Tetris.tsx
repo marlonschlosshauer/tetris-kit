@@ -2,10 +2,7 @@ import { FC } from "react";
 import { Game } from "@/components/Game/Game";
 import { Input } from "@/components/Input/Input";
 import { Tick } from "@/components/Tick/Tick";
-import {
-  TetrisProvider,
-  TetrisProps as TetrisProviderProps,
-} from "@/provider/tetris";
+import { TetrisProvider, TetrisProviderProps } from "@/provider/tetris";
 
 export interface TetrisProps extends TetrisProviderProps {
   hasInput?: boolean;
