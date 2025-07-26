@@ -16,7 +16,7 @@ export const Frame: FC<PropsWithChildren<PropsWithClassName<FrameProps>>> = ({
     <div
       data-x={x}
       data-y={y}
-      id={`${x}-${y}`}
+      id={`${status}-${x}-${y}`}
       className={`${styles.cell} ${styles[status]} ${className}`}
       style={{ gridRow: y + 1, gridColumn: x + 1 }}
     >
