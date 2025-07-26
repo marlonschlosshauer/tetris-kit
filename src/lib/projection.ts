@@ -1,6 +1,6 @@
 import { Active, Cell, CellStatus, Game, Playground } from "@/types/game";
 import { tetrimoni } from "./tetrimoni";
-import { bounds } from "./collision";
+import { bounds, drop } from "./collision";
 
 export const projectActive = (
   active: Active,
@@ -62,6 +62,44 @@ export const projectGame = (game: Game): Cell[][] => {
       status: "empty" as CellStatus,
     })),
   );
+
+  return map;
+};
+
+export const projectGhost = (
+  active: Active,
+  playground: Playground,
+  cells: Cell[],
+): Cell[][] => {
+  const gameState = { active, playground, cells, queue: [], cleared: 0 };
+  const droppedGameState = drop(gameState);
+  const droppedActive = droppedGameState.active;
+  
+  const field = tetrimoni(droppedActive.block);
+
+  const map = Array.from({ length: playground.rows }).map((_, y) =>
+    Array.from({ length: playground.columns }).map((_, x) => ({
+      x,
+      y,
+      status: "empty" as CellStatus,
+    })),
+  );
+
+  field.forEach((row, y) => {
+    row.forEach((value, x) => {
+      const newY = y + droppedActive.y;
+      const newX = x + droppedActive.x;
+
+      if (!bounds(newY, newX, playground)) {
+        return;
+      }
+
+      map[newY][newX] = {
+        ...map?.[newY]?.[newX],
+        status: value ? "ghost" : map?.[newY]?.[newX]?.status,
+      };
+    });
+  });
 
   return map;
 };

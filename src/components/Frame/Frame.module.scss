@@ -3,6 +3,10 @@
 }
 
 .active {
+  z-index: 4;
+}
+
+.ghost {
   z-index: 3;
 }
 
