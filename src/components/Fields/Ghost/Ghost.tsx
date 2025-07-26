@@ -18,7 +18,7 @@ export const Ghost: FC = () => {
         row.flatMap(
           (cell) =>
             cell.status === "ghost" && (
-              <Block key={`ghost-${cell.x}-${cell.y}`} {...cell} />
+              <Block key={`${cell.x}-${cell.y}`} {...cell} />
             ),
         ),
       )}
