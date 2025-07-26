@@ -7,15 +7,15 @@ export type BlockProps = Cell;
 
 export const Block: FC<BlockProps> = (props) => {
   const { components, classNames } = useVisual();
-  const { Cell: Tile } = components;
+  const { Cell } = components;
 
-  if (!Tile) {
+  if (!Cell) {
     return null;
   }
 
   return (
     <Frame {...props}>
-      <Tile {...props} className={classNames?.cell} />
+      <Cell {...props} className={classNames?.cell} />
     </Frame>
   );
 };
