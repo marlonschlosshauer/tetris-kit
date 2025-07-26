@@ -4,7 +4,7 @@ import { Fields } from "@/components/Fields/Fields";
 import { useTetris } from "@/provider/tetris";
 
 export const Game: FC = () => {
-  const { playground, components } = useTetris();
+  const { playground, components, classNames } = useTetris();
   const { Playground: Playground } = components;
 
   if (!Playground) {
@@ -12,7 +12,7 @@ export const Game: FC = () => {
   }
 
   return (
-    <Playground {...playground}>
+    <Playground {...playground} className={classNames?.playground}>
       <Fields />
     </Playground>
   );

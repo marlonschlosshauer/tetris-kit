@@ -6,7 +6,7 @@ import { useVisual } from "@/provider/visual";
 export type BlockProps = Cell;
 
 export const Block: FC<BlockProps> = (props) => {
-  const { components } = useVisual();
+  const { components, classNames } = useVisual();
   const { Cell: Tile } = components;
 
   if (!Tile) {
@@ -15,7 +15,7 @@ export const Block: FC<BlockProps> = (props) => {
 
   return (
     <Frame {...props}>
-      <Tile {...props} />
+      <Tile {...props} className={classNames?.cell} />
     </Frame>
   );
 };

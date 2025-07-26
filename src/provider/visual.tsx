@@ -3,8 +3,8 @@ import { Playground as PlaygroundBase } from "@/components/Playground/Playground
 import { Cell as CellBase } from "@/components/Cell/Cell";
 
 export interface VisualDataClassNames {
-  cell: string;
-  playground: string;
+  cell?: string;
+  playground?: string;
 }
 
 export interface VisualDataComponents {
@@ -13,7 +13,7 @@ export interface VisualDataComponents {
 }
 
 export interface VisualData {
-  classNames?: Partial<VisualDataClassNames>;
+  classNames: VisualDataClassNames;
   components: VisualDataComponents;
 }
 
@@ -27,6 +27,7 @@ const Context = createContext({} as VisualData);
 export const VisualProvider: FC<PropsWithChildren<VisualProps>> = ({
   children,
   components,
+  classNames = {},
   ...props
 }) => {
   const { Playground: Playground = PlaygroundBase, Cell = CellBase } =
@@ -34,7 +35,11 @@ export const VisualProvider: FC<PropsWithChildren<VisualProps>> = ({
 
   return (
     <Context.Provider
-      value={{ ...props, components: { Playground: Playground, Cell } }}
+      value={{
+        ...props,
+        classNames,
+        components: { Playground: Playground, Cell },
+      }}
     >
       {children}
     </Context.Provider>
