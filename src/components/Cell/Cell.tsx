@@ -9,5 +9,7 @@ export const Cell: FC<PropsWithClassName<CellProps>> = ({
   status,
   className,
 }) => {
-  return <div className={`${styles.cell} ${styles[status]} ${className}`} />;
+  return (
+    <div className={`${styles.cell} ${styles[status]} ${className || ""}`} />
+  );
 };
