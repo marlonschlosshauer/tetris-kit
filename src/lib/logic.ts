@@ -7,9 +7,9 @@ export const startGame = (game: Partial<Game> = {}): Game => {
   const [active, ...queue] = getQueue();
 
   return {
-    playground: { rows: 24, columns: 4 },
+    playground: { rows: 16, columns: 10 },
     cells: [],
-    active: { block: active, y: 0, x: 0 },
+    active: { block: active, x: 5, y: 0 },
     queue,
     cleared: 0,
     ...game,
@@ -32,7 +32,11 @@ export const castActive = (game: Game): Game => {
   return {
     ...game,
     queue: rest,
-    active: { block: next, x: 0, y: 0 },
+    active: {
+      block: next,
+      x: Math.floor(game.playground.columns / 2),
+      y: 0,
+    },
     cells: [...game.cells, ...cells],
   };
 };
