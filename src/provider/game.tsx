@@ -1,3 +1,5 @@
+"use client";
+
 import { Game as Base } from "@/types/game";
 import {
   ActionDispatch,
@@ -22,7 +24,9 @@ export const GameProvider: FC<PropsWithChildren<GameProps>> = ({
   children,
   ...props
 }) => {
-  const [state, dispatch] = useReducer(reduce, props, () => startGame(props));
+  const [state, dispatch] = useReducer(reduce, undefined, () =>
+    startGame(props),
+  );
 
   return (
     <Context.Provider value={{ ...state, dispatch }}>

@@ -1,3 +1,5 @@
+"use client";
+
 import { FC } from "react";
 import { Game } from "@/components/Game/Game";
 import { Input } from "@/components/Input/Input";

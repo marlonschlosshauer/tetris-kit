@@ -1,3 +1,5 @@
+"use client";
+
 import { FC, PropsWithChildren } from "react";
 import { GameData, GameProps, GameProvider, useGame } from "./game";
 import { useVisual, VisualData, VisualProps, VisualProvider } from "./visual";
