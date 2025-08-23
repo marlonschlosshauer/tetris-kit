@@ -1,3 +1,5 @@
+"use client";
+
 import { FC } from "react";
 
 import { Fields } from "@/components/Fields/Fields";
@@ -5,7 +7,7 @@ import { useTetris } from "@/provider/tetris";
 
 export const Game: FC = () => {
   const { playground, components, classNames } = useTetris();
-  const { Playground: Playground } = components;
+  const { Playground } = components;
 
   if (!Playground) {
     return null;

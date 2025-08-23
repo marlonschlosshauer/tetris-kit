@@ -26,19 +26,20 @@ const Context = createContext({} as VisualData);
 
 export const VisualProvider: FC<PropsWithChildren<VisualProps>> = ({
   children,
-  components,
+  components = {},
   classNames = {},
   ...props
 }) => {
-  const { Playground: Playground = PlaygroundBase, Cell = CellBase } =
-    components ?? {};
-
   return (
     <Context.Provider
       value={{
         ...props,
         classNames,
-        components: { Playground: Playground, Cell },
+        components: {
+          Playground: PlaygroundBase,
+          Cell: CellBase,
+          ...components,
+        },
       }}
     >
       {children}

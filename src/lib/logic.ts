@@ -2,18 +2,21 @@ import { Cell, CellStatus, Game } from "@/types/game";
 import { getQueue } from "./queue";
 import { projectActive } from "./projection";
 import { collision } from "./collision";
+import { zip } from "./objects";
 
 export const startGame = (game: Partial<Game> = {}): Game => {
   const [active, ...queue] = getQueue();
 
-  return {
-    playground: { rows: 16, columns: 10 },
-    cells: [],
-    active: { block: active, x: 5, y: 0 },
-    queue,
-    cleared: 0,
-    ...game,
-  };
+  return zip(
+    {
+      playground: { rows: 16, columns: 10 },
+      cells: [],
+      active: { block: active, x: 5, y: 0 },
+      queue,
+      cleared: 0,
+    },
+    game,
+  );
 };
 
 export const castActive = (game: Game): Game => {
