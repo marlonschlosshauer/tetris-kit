@@ -13,9 +13,14 @@ export const Block: FC<BlockProps> = (props) => {
     return null;
   }
 
+  const classes =
+    typeof classNames.cell === "string"
+      ? { className: classNames.cell }
+      : { classNames: classNames.cell };
+
   return (
     <Frame {...props}>
-      <Cell {...props} className={classNames?.cell} />
+      <Cell {...props} {...classes} />
     </Frame>
   );
 };

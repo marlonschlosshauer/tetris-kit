@@ -1,5 +1,5 @@
 import { Block, Game, Playground } from "@/types/game";
-import { tetrimoni } from "./tetrimoni";
+import { resolveBlock } from "./tetromino";
 
 export const bounds = (y: number, x: number, playground: Playground) => {
   return y < playground.rows && y >= 0 && x < playground.columns && x >= 0;
@@ -15,7 +15,7 @@ export const rotate = (block: Block) => {
 
 export const collision = (game: Game) => {
   const { active, playground, cells } = game;
-  const field = tetrimoni(active.block);
+  const field = resolveBlock(active.block);
 
   return field
     .flatMap((row, y) => row.flatMap((value, x) => ({ y, x, value })))

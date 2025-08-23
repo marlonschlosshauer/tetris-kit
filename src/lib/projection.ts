@@ -1,12 +1,12 @@
 import { Active, Cell, CellStatus, Game, Playground } from "@/types/game";
-import { tetrimoni } from "./tetrimoni";
+import { blockToTetromino, resolveBlock } from "./tetromino";
 import { bounds, drop } from "./collision";
 
 export const projectActive = (
   active: Active,
   playground: Playground,
 ): Cell[][] => {
-  const field = tetrimoni(active.block);
+  const field = resolveBlock(active.block);
 
   const map: Cell[][] = Array.from({ length: playground.rows }).map((_, y) =>
     Array.from({ length: playground.columns }).map((_, x) => ({
@@ -28,7 +28,7 @@ export const projectActive = (
       map[newY][newX] = {
         ...map?.[newY]?.[newX],
         status: value ? "active" : map?.[newY]?.[newX]?.status,
-        block: value ? active.block : undefined,
+        type: value ? blockToTetromino(active.block) : undefined,
       };
     });
   });
@@ -76,7 +76,7 @@ export const projectGhost = (
   const droppedGameState = drop(gameState);
   const droppedActive = droppedGameState.active;
 
-  const field = tetrimoni(droppedActive.block);
+  const field = resolveBlock(droppedActive.block);
 
   const map = Array.from({ length: playground.rows }).map((_, y) =>
     Array.from({ length: playground.columns }).map((_, x) => ({

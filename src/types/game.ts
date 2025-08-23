@@ -25,13 +25,15 @@ export type Block =
   | 600
   | 6000;
 
+export type Tetrimoni = "o" | "i" | "l" | "j" | "s" | "z" | "t";
+
 export type CellStatus = "empty" | "filled" | "ghost" | "active";
 
 export interface Cell {
   status: CellStatus;
   x: number;
   y: number;
-  block?: Block;
+  type?: Tetrimoni;
 }
 
 export interface Playground {

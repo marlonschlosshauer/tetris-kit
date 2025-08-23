@@ -1,6 +1,6 @@
-import { Block } from "@/types/game";
+import { Block, Tetrimoni } from "@/types/game";
 
-export const tetrimoni = (block: Block) => {
+export const resolveBlock = (block: Block) => {
   const field = [
     [0, 0, 0, 0],
     [0, 0, 0, 0],
@@ -132,4 +132,41 @@ export const tetrimoni = (block: Block) => {
   }
 
   return field;
+};
+
+export const blockToTetromino = (block: Block): Tetrimoni => {
+  switch (block) {
+    case 0:
+      return "o";
+    case 1:
+    case 10:
+    case 100:
+    case 1000:
+      return "j";
+    case 2:
+    case 20:
+    case 200:
+    case 2000:
+      return "l";
+    case 3:
+    case 30:
+    case 300:
+    case 3000:
+      return "s";
+    case 4:
+    case 40:
+    case 400:
+    case 4000:
+      return "t";
+    case 5:
+    case 50:
+    case 500:
+    case 5000:
+      return "z";
+    case 6:
+    case 60:
+    case 600:
+    case 6000:
+      return "i";
+  }
 };

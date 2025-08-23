@@ -1,9 +1,9 @@
 import { createContext, FC, PropsWithChildren, useContext } from "react";
 import { Playground as PlaygroundBase } from "@/components/Playground/Playground";
-import { Cell as CellBase } from "@/components/Cell/Cell";
+import { Cell as CellBase, CellClassNames } from "@/components/Cell/Cell";
 
 export interface VisualDataClassNames {
-  cell?: string;
+  cell?: CellClassNames;
   playground?: string;
 }
 

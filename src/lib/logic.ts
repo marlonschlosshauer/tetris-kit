@@ -3,6 +3,7 @@ import { getQueue } from "./queue";
 import { projectActive } from "./projection";
 import { collision } from "./collision";
 import { zip } from "./objects";
+import { blockToTetromino } from "./tetromino";
 
 export const startGame = (game: Partial<Game> = {}): Game => {
   const [active, ...queue] = getQueue();
@@ -27,7 +28,7 @@ export const castActive = (game: Game): Game => {
     .map((cell) => ({
       ...cell,
       status: "filled" as CellStatus,
-      block: game.active.block,
+      type: blockToTetromino(game.active.block),
     }));
 
   if (!game.queue.length) {
