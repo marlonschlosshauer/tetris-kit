@@ -24,7 +24,11 @@ export const castActive = (game: Game): Game => {
   const cells = projectedActive
     .flatMap((rows) => rows)
     .filter((cell) => cell.status === "active")
-    .map((cell) => ({ ...cell, status: "filled" as CellStatus }));
+    .map((cell) => ({
+      ...cell,
+      status: "filled" as CellStatus,
+      block: game.active.block,
+    }));
 
   if (!game.queue.length) {
     game.queue = getQueue();

@@ -8,7 +8,7 @@ export const projectActive = (
 ): Cell[][] => {
   const field = tetrimoni(active.block);
 
-  const map = Array.from({ length: playground.rows }).map((_, y) =>
+  const map: Cell[][] = Array.from({ length: playground.rows }).map((_, y) =>
     Array.from({ length: playground.columns }).map((_, x) => ({
       x,
       y,
@@ -28,6 +28,7 @@ export const projectActive = (
       map[newY][newX] = {
         ...map?.[newY]?.[newX],
         status: value ? "active" : map?.[newY]?.[newX]?.status,
+        block: value ? active.block : undefined,
       };
     });
   });
@@ -74,7 +75,7 @@ export const projectGhost = (
   const gameState = { active, playground, cells, queue: [], cleared: 0 };
   const droppedGameState = drop(gameState);
   const droppedActive = droppedGameState.active;
-  
+
   const field = tetrimoni(droppedActive.block);
 
   const map = Array.from({ length: playground.rows }).map((_, y) =>

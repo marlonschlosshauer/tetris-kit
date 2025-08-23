@@ -3,7 +3,7 @@ import { FC } from "react";
 import { PropsWithClassName } from "@/types/app";
 import { Cell as Base } from "@/types/game";
 
-export type CellProps = Partial<Base>;
+export type CellProps = Base;
 
 export const Cell: FC<PropsWithClassName<CellProps>> = ({
   status,

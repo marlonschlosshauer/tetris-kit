@@ -31,6 +31,7 @@ export interface Cell {
   status: CellStatus;
   x: number;
   y: number;
+  block?: Block;
 }
 
 export interface Playground {
