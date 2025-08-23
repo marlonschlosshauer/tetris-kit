@@ -1,6 +1,6 @@
 import { Game } from "@/types/game";
 import { collision, drop, nudge, rotate } from "./collision";
-import { castActive, clearCells, hasLost } from "./logic";
+import { castActive, clearCells, hasLost, startGame } from "./logic";
 
 export type EventMoveDown = { type: "DOWN" };
 
@@ -14,13 +14,16 @@ export type EventDrop = { type: "DROP" };
 export type EventTick = { type: "TICK" };
 export type EventStore = { type: "STORE" };
 
+export type EventRestart = { type: "RESTART"; props: Partial<Game> };
+
 export type Event =
   | EventMoveDown
   | EventMoveLeft
   | EventMoveRight
   | EventRotate
   | EventDrop
-  | EventTick;
+  | EventTick
+  | EventRestart;
 
 export const reduce = (game: Game, event: Event) => {
   const { active } = game;
@@ -65,6 +68,9 @@ export const reduce = (game: Game, event: Event) => {
       };
 
       return !collision(newGame) ? newGame : hasLost(castActive(game));
+    }
+    case "RESTART": {
+      return startGame(event.props);
     }
     default:
       return game;
