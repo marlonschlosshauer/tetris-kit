@@ -1,6 +1,7 @@
 import { Active } from "@/types/game";
 
-export const resolveBlock = (active: Active) => {
+// @ts-expect-error Surpress warning until blocks define rotation range
+export const resolveBlock = (active: Active): number[][] => {
   switch (active.tetrimoni) {
     case "o":
       return [
