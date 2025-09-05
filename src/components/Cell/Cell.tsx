@@ -1,4 +1,4 @@
-import styles from "./Cell.module.scss";
+import styles from "./Cell.module.css";
 import { FC } from "react";
 import { PropsWithClassName } from "@/types/app";
 import { Cell as Base } from "@/types/game";

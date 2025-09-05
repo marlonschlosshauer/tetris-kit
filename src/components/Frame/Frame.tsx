@@ -1,5 +1,5 @@
 import { Cell } from "@/types/game";
-import styles from "./Frame.module.scss";
+import styles from "./Frame.module.css";
 import { FC, PropsWithChildren } from "react";
 import { PropsWithClassName } from "@/types/app";
 

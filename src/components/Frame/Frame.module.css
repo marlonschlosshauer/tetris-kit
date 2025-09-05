@@ -1,3 +1,4 @@
+/* @todo: Remove z-index once projection is optimised */
 .cell {
   z-index: 1;
 }
