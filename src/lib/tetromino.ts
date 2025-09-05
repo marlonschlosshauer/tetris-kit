@@ -108,9 +108,9 @@ export const resolveBlock = (active: Active) => {
           ];
         case 2:
           return [
+            [0, 0, 0, 0],
             [1, 1, 1, 0],
             [0, 1, 0, 0],
-            [0, 0, 0, 0],
             [0, 0, 0, 0],
           ];
         case 3:
