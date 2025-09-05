@@ -1,8 +1,8 @@
-import { Block } from "@/types/game";
+import { Tetrimoni } from "@/types/game";
 
 export const getQueue = () => {
-  let blocks: Block[] = [0, 1, 2, 3, 4, 5, 6];
-  const queue: Block[] = [];
+  let blocks: Tetrimoni[] = ["o", "j", "l", "t", "s", "z", "i"];
+  const queue: Tetrimoni[] = [];
 
   while (blocks.length) {
     const index = Math.floor(Math.random() * 10) % blocks.length;

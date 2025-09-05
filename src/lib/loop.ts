@@ -31,7 +31,7 @@ export const reduce = (game: Game, event: Event) => {
     case "ROTATE": {
       const newGame = {
         ...game,
-        active: { ...active, block: rotate(active.block) },
+        active: rotate(active),
       };
 
       return !collision(newGame) ? newGame : nudge(newGame);
