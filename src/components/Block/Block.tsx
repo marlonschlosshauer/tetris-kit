@@ -1,26 +1,22 @@
 import { FC } from "react";
-import { Cell } from "@/types/game";
+import { Cell } from "@/components/Cell/Cell";
 import { Frame } from "@/components/Frame/Frame";
 import { useVisual } from "@/provider/visual";
+import { Cell as Cell_ } from "@/types/game";
 
-export type BlockProps = Cell;
+export type BlockProps = Cell_;
 
-export const Block: FC<BlockProps> = (props) => {
-  const { components, classNames } = useVisual();
-  const { Cell } = components;
+export const Block: FC<BlockProps> = props => {
+    const { classNames } = useVisual();
 
-  if (!Cell) {
-    return null;
-  }
+    const classes =
+        typeof classNames.cell === "string"
+            ? { className: classNames.cell }
+            : { classNames: classNames.cell };
 
-  const classes =
-    typeof classNames.cell === "string"
-      ? { className: classNames.cell }
-      : { classNames: classNames.cell };
-
-  return (
-    <Frame {...props}>
-      <Cell {...props} {...classes} />
-    </Frame>
-  );
+    return (
+        <Frame {...props}>
+            <Cell {...props} {...classes} />
+        </Frame>
+    );
 };
