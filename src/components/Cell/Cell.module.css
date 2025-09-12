@@ -1,25 +1,25 @@
 .cell {
-			width: 24px;
-			height: 24px;
-			border: 1px solid white;
+    width: 24px;
+    height: 24px;
+    border: 1px solid white;
 }
 
 .active {
-			background-color: blue;
-			border-color: blue;
+    background-color: blue;
+    border-color: blue;
 }
 
 .filled {
-			background-color: darkblue;
-			border-color: darkblue;
+    background-color: darkblue;
+    border-color: darkblue;
 }
 
 .empty {
-			background-color: lightblue;
-			border-color: darkgrey;
+    background-color: lightblue;
+    border-color: darkgrey;
 }
 
 .ghost {
-			background-color: red;
-			border-color: red;
+    background-color: red;
+    border-color: red;
 }

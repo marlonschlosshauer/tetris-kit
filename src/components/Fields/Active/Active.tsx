@@ -1,22 +1,22 @@
 import { FC, Fragment } from "react";
-import { projectActive } from "@/lib/projection";
 import { Block } from "@/components/Block/Block";
+import { projectActive } from "@/lib/projection";
 import { useTetris } from "@/provider/tetris";
 
 export const Active: FC = () => {
-  const { active, playground } = useTetris();
+    const { active, playground } = useTetris();
 
-  if (!active || !playground) {
-    return null;
-  }
+    if (!active || !playground) {
+        return null;
+    }
 
-  const map = projectActive(active, playground);
+    const map = projectActive(active, playground);
 
-  return (
-    <Fragment>
-      {map.flatMap((row) =>
-        row.flatMap((cell) => <Block key={`${cell.x}-${cell.y}`} {...cell} />),
-      )}
-    </Fragment>
-  );
+    return (
+        <Fragment>
+            {map.flatMap(row =>
+                row.flatMap(cell => <Block key={`${cell.x}-${cell.y}`} {...cell} />)
+            )}
+        </Fragment>
+    );
 };

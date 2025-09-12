@@ -5,12 +5,12 @@ import { Blocks } from "./Blocks/Blocks";
 import { Ghost } from "./Ghost/Ghost";
 
 export const Fields: FC = () => {
-  return (
-    <Fragment>
-      <Background />
-      <Blocks />
-      <Ghost />
-      <Active />
-    </Fragment>
-  );
+    return (
+        <Fragment>
+            <Background />
+            <Blocks />
+            <Ghost />
+            <Active />
+        </Fragment>
+    );
 };

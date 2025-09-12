@@ -7,20 +7,16 @@ import { Tick } from "@/components/Tick/Tick";
 import { TetrisProvider, TetrisProviderProps } from "@/provider/tetris";
 
 export interface TetrisProps extends TetrisProviderProps {
-  hasInput?: boolean;
-  hasTick?: boolean;
+    hasInput?: boolean;
+    hasTick?: boolean;
 }
 
-export const Tetris: FC<TetrisProps> = ({
-  hasInput = true,
-  hasTick = true,
-  ...props
-}) => {
-  return (
-    <TetrisProvider {...props}>
-      {hasInput && <Input />}
-      {hasTick && <Tick />}
-      <Game />
-    </TetrisProvider>
-  );
+export const Tetris: FC<TetrisProps> = ({ hasInput = true, hasTick = true, ...props }) => {
+    return (
+        <TetrisProvider {...props}>
+            {hasInput && <Input />}
+            {hasTick && <Tick />}
+            <Game />
+        </TetrisProvider>
+    );
 };

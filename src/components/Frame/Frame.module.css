@@ -1,20 +1,20 @@
 /* @todo: Remove z-index once projection is optimised */
 .cell {
-  z-index: 1;
+    z-index: 1;
 }
 
 .active {
-  z-index: 4;
+    z-index: 4;
 }
 
 .ghost {
-  z-index: 3;
+    z-index: 3;
 }
 
 .filled {
-  z-index: 2;
+    z-index: 2;
 }
 
 .empty {
-  z-index: 1;
+    z-index: 1;
 }

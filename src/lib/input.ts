@@ -1,42 +1,42 @@
-import { useTetris } from "@/provider/tetris";
 import { useCallback, useEffect } from "react";
+import { useTetris } from "@/provider/tetris";
 
 export const useInput = () => {
-  const { dispatch } = useTetris();
+    const { dispatch } = useTetris();
 
-  const fn = useCallback(
-    (e: KeyboardEvent) => {
-      switch (e.key) {
-        case "a":
-        case "b":
-        case "h":
-        case "ArrowLeft":
-          return dispatch({ type: "LEFT" });
-        case "d":
-        case "f":
-        case "l":
-        case "ArrowRight":
-          return dispatch({ type: "RIGHT" });
-        case "w":
-        case "p":
-        case "k":
-        case "ArrowUp":
-          return dispatch({ type: "ROTATE" });
-        case "s":
-        case "n":
-        case "j":
-        case "ArrowDown":
-          return dispatch({ type: "DOWN" });
-        case " ":
-          return dispatch({ type: "DROP" });
-      }
-    },
-    [dispatch],
-  );
+    const fn = useCallback(
+        (e: KeyboardEvent) => {
+            switch (e.key) {
+                case "a":
+                case "b":
+                case "h":
+                case "ArrowLeft":
+                    return dispatch({ type: "LEFT" });
+                case "d":
+                case "f":
+                case "l":
+                case "ArrowRight":
+                    return dispatch({ type: "RIGHT" });
+                case "w":
+                case "p":
+                case "k":
+                case "ArrowUp":
+                    return dispatch({ type: "ROTATE" });
+                case "s":
+                case "n":
+                case "j":
+                case "ArrowDown":
+                    return dispatch({ type: "DOWN" });
+                case " ":
+                    return dispatch({ type: "DROP" });
+            }
+        },
+        [dispatch]
+    );
 
-  useEffect(() => {
-    window.addEventListener("keydown", fn);
+    useEffect(() => {
+        window.addEventListener("keydown", fn);
 
-    return () => window.removeEventListener("keydown", fn);
-  }, [fn]);
+        return () => window.removeEventListener("keydown", fn);
+    }, [fn]);
 };
