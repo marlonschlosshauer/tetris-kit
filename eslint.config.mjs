@@ -11,6 +11,14 @@ const compat = new FlatCompat({
 
 const eslintConfig = [
   ...compat.extends("next/core-web-vitals", "next/typescript"),
+  {
+    plugins: {
+      "@limegrass/import-alias": (await import("@limegrass/eslint-plugin-import-alias")).default,
+    },
+    rules: {
+      "@limegrass/import-alias/import-alias": "error",
+    },
+  },
 ];
 
 export default eslintConfig;
