@@ -1,6 +1,6 @@
 import { FC, Fragment } from "react";
 import { Block } from "@/components/Block/Block";
-import { useTetris } from "@/provider/tetris";
+import { useTetris } from "@/provider";
 
 export const Background: FC = () => {
     const { playground } = useTetris();

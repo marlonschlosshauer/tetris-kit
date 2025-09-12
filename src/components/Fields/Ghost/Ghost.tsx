@@ -1,7 +1,7 @@
 import { FC, Fragment } from "react";
 import { Block } from "@/components/Block/Block";
 import { projectGhost } from "@/lib/projection";
-import { useTetris } from "@/provider/tetris";
+import { useTetris } from "@/provider";
 
 export const Ghost: FC = () => {
     const { active, playground, cells } = useTetris();

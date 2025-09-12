@@ -1,22 +1,43 @@
 "use client";
 
 import { FC } from "react";
-import { Game } from "@/components/Game/Game";
+import { Active } from "@/components/Fields/Active/Active";
+import { Background } from "@/components/Fields/Background/Background";
+import { Blocks } from "@/components/Fields/Blocks/Blocks";
+import { Ghost } from "@/components/Fields/Ghost/Ghost";
 import { Input } from "@/components/Input/Input";
+import { Playground } from "@/components/Playground/Playground";
 import { Tick } from "@/components/Tick/Tick";
-import { TetrisProvider, TetrisProviderProps } from "@/provider/tetris";
+import { Provider, ProviderProps } from "@/provider";
 
-export interface TetrisProps extends TetrisProviderProps {
+export interface TetrisProps extends ProviderProps {
     hasInput?: boolean;
     hasTick?: boolean;
 }
 
-export const Tetris: FC<TetrisProps> = ({ hasInput = true, hasTick = true, ...props }) => {
+const Base: FC<TetrisProps> = props => {
     return (
-        <TetrisProvider {...props}>
-            {hasInput && <Input />}
-            {hasTick && <Tick />}
-            <Game />
-        </TetrisProvider>
+        <Provider {...props}>
+            <Input />
+            <Playground>
+                <Background />
+                <Blocks />
+                <Ghost />
+                <Active />
+            </Playground>
+        </Provider>
     );
 };
+
+export const Tetris = {
+    Provider: Provider,
+    Input: Input,
+    Tick: Tick,
+    Playground: Playground,
+    Background: Background,
+    Active: Active,
+    Ghost: Ghost,
+    Blocks: Blocks,
+};
+
+export default Base;

@@ -1,23 +1,27 @@
+"use client";
+
 import { FC, PropsWithChildren } from "react";
+import clsx from "clsx";
+import { useTetris } from "@/provider";
 import { PropsWithClassName } from "@/types/app";
-import { Playground as Base } from "@/types/game";
 import styles from "./Playground.module.css";
 
-export type PlaygroundProps = Base;
+export const Playground: FC<PropsWithChildren<PropsWithClassName>> = ({ className, children }) => {
+    const { classNames, playground } = useTetris();
 
-export const Playground: FC<PropsWithChildren<PropsWithClassName<PlaygroundProps>>> = ({
-    rows,
-    columns,
-    children,
-    className,
-}) => {
+    if (!playground) {
+        return null;
+    }
+
+    const { rows, columns } = playground;
+
     if (!rows || !columns) {
         return null;
     }
 
     return (
         <section
-            className={`${styles.wrapper} ${className || ""}`}
+            className={clsx(styles.wrapper, className, classNames.playground)}
             style={{
                 gridTemplateRows: `repeat(${rows}, 1fr)`,
                 gridTemplateColumns: `repeat(${columns}, 1fr)`,

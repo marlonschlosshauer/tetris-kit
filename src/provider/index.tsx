@@ -4,14 +4,11 @@ import { FC, PropsWithChildren } from "react";
 import { GameData, GameProps, GameProvider, useGame } from "@/provider/game";
 import { VisualData, VisualProps, VisualProvider, useVisual } from "@/provider/visual";
 
-export type TetrisProviderData = GameData & VisualData;
+export type ProviderData = GameData & VisualData;
 
-export type TetrisProviderProps = GameProps & VisualProps;
+export type ProviderProps = GameProps & VisualProps;
 
-export const TetrisProvider: FC<PropsWithChildren<TetrisProviderProps>> = ({
-    children,
-    ...props
-}) => {
+export const Provider: FC<PropsWithChildren<ProviderProps>> = ({ children, ...props }) => {
     return (
         <VisualProvider {...props}>
             <GameProvider {...props}>{children}</GameProvider>

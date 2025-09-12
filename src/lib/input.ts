@@ -1,5 +1,5 @@
 import { useCallback, useEffect } from "react";
-import { useTetris } from "@/provider/tetris";
+import { useTetris } from "@/provider";
 
 export const useInput = () => {
     const { dispatch } = useTetris();

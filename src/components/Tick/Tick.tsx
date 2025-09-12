@@ -1,5 +1,5 @@
 import { FC, useEffect } from "react";
-import { useTetris } from "@/provider/tetris";
+import { useTetris } from "@/provider";
 
 export const Tick: FC = () => {
     const { dispatch } = useTetris();
