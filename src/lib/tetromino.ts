@@ -1,8 +1,8 @@
 import { Active } from "@/types/game";
 
 // @ts-expect-error Surpress warning until blocks define rotation range
-export const resolveBlock = (active: Active): number[][] => {
-    switch (active.tetrimoni) {
+export const resolveBlock = (block: Pick<Active, "tetrimoni" | "rotation">): number[][] => {
+    switch (block.tetrimoni) {
         case "o":
             return [
                 [1, 1, 0, 0],
@@ -11,7 +11,7 @@ export const resolveBlock = (active: Active): number[][] => {
                 [0, 0, 0, 0],
             ];
         case "j":
-            switch (active.rotation) {
+            switch (block.rotation) {
                 case 0:
                     return [
                         [0, 1, 0, 0],
@@ -42,7 +42,7 @@ export const resolveBlock = (active: Active): number[][] => {
                     ];
             }
         case "l":
-            switch (active.rotation) {
+            switch (block.rotation) {
                 case 0:
                     return [
                         [1, 0, 0, 0],
@@ -73,7 +73,7 @@ export const resolveBlock = (active: Active): number[][] => {
                     ];
             }
         case "s":
-            switch (active.rotation) {
+            switch (block.rotation) {
                 case 0:
                 case 2:
                     return [
@@ -92,7 +92,7 @@ export const resolveBlock = (active: Active): number[][] => {
                     ];
             }
         case "t":
-            switch (active.rotation) {
+            switch (block.rotation) {
                 case 0:
                     return [
                         [0, 1, 0, 0],
@@ -123,7 +123,7 @@ export const resolveBlock = (active: Active): number[][] => {
                     ];
             }
         case "z":
-            switch (active.rotation) {
+            switch (block.rotation) {
                 case 0:
                 case 2:
                     return [
@@ -142,7 +142,7 @@ export const resolveBlock = (active: Active): number[][] => {
                     ];
             }
         case "i":
-            switch (active.rotation) {
+            switch (block.rotation) {
                 case 0:
                 case 2:
                     return [
