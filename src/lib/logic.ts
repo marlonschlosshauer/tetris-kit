@@ -2,10 +2,10 @@ import { Cell, CellStatus, Game } from "@/types/game";
 import { collision } from "./collision";
 import { zip } from "./objects";
 import { projectActive } from "./projection";
-import { getQueue } from "./queue";
+import { checkQueue } from "./queue";
 
 export const startGame = (game: Partial<Game> = {}): Game => {
-    const [active, ...queue] = getQueue();
+    const [active, ...queue] = checkQueue([]);
 
     return zip(
         {
@@ -30,11 +30,7 @@ export const castActive = (game: Game): Game => {
             type: game.active.tetrimoni,
         }));
 
-    if (!game.queue.length) {
-        game.queue = getQueue();
-    }
-
-    const [next, ...rest] = game.queue;
+    const [next, ...rest] = checkQueue(game.queue);
 
     return {
         ...game,
