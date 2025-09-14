@@ -21,6 +21,11 @@ export const checkQueue = (queue: Tetromino[]) => {
     // A simple solution is to always generate two full queues, i.e frontrunning
     // an entire queue as backup, so worse case is you have 1+7 blocks to preview
 
+    // Handle edge-case where the queue is 0, so it gets double filled
+    if (!queue.length) {
+        return [...getQueue(), ...getQueue()];
+    }
+
     if (queue.length <= 7) {
         return [...queue, ...getQueue()];
     }

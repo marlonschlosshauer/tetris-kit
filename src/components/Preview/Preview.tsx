@@ -30,7 +30,7 @@ export const Rest: FC<PropsWithClassName> = ({ className }) => {
     }
     return (
         <Fragment>
-            {rest.map((tetromino, key) => (
+            {rest.slice(0, 6).map((tetromino, key) => (
                 <Tetromino key={key} className={className} tetromino={tetromino} />
             ))}
         </Fragment>
