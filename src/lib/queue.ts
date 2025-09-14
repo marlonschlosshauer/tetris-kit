@@ -1,8 +1,8 @@
-import { Tetrimoni } from "@/types/game";
+import { Tetromino } from "@/types/game";
 
 export const getQueue = () => {
-    let blocks: Tetrimoni[] = ["o", "j", "l", "t", "s", "z", "i"];
-    const queue: Tetrimoni[] = [];
+    let blocks: Tetromino[] = ["o", "j", "l", "t", "s", "z", "i"];
+    const queue: Tetromino[] = [];
 
     while (blocks.length) {
         const index = Math.floor(Math.random() * 10) % blocks.length;
@@ -13,7 +13,7 @@ export const getQueue = () => {
     return queue;
 };
 
-export const checkQueue = (queue: Tetrimoni[]) => {
+export const checkQueue = (queue: Tetromino[]) => {
     // We generate a queue round-robin style, however if we only generate 7 blocks
     // we run into issues where the preview will always show 7-n, eventually
     // running out of blocks to show until we used up all 7 blocks

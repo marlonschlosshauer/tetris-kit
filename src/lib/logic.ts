@@ -11,7 +11,7 @@ export const startGame = (game: Partial<Game> = {}): Game => {
         {
             playground: { rows: 16, columns: 10 },
             cells: [],
-            active: { tetrimoni: active, x: 5, y: 0, rotation: 0 },
+            active: { tetromino: active, x: 5, y: 0, rotation: 0 },
             queue,
             cleared: 0,
         },
@@ -27,7 +27,7 @@ export const castActive = (game: Game): Game => {
         .map(cell => ({
             ...cell,
             status: "filled" as CellStatus,
-            type: game.active.tetrimoni,
+            type: game.active.tetromino,
         }));
 
     const [next, ...rest] = checkQueue(game.queue);
@@ -36,7 +36,7 @@ export const castActive = (game: Game): Game => {
         ...game,
         queue: rest,
         active: {
-            tetrimoni: next,
+            tetromino: next,
             x: Math.floor(game.playground.columns / 2),
             y: 0,
             rotation: 0,

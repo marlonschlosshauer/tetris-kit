@@ -1,8 +1,8 @@
 import { Active } from "@/types/game";
 
 // @ts-expect-error Surpress warning until blocks define rotation range
-export const resolveBlock = (block: Pick<Active, "tetrimoni" | "rotation">): number[][] => {
-    switch (block.tetrimoni) {
+export const resolveBlock = (block: Pick<Active, "tetromino" | "rotation">): number[][] => {
+    switch (block.tetromino) {
         case "o":
             return [
                 [1, 1, 0, 0],

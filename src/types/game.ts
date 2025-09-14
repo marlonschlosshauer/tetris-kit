@@ -1,4 +1,4 @@
-export type Tetrimoni = "o" | "i" | "l" | "j" | "s" | "z" | "t";
+export type Tetromino = "o" | "i" | "l" | "j" | "s" | "z" | "t";
 
 export type CellStatus = "empty" | "filled" | "ghost" | "active";
 
@@ -6,7 +6,7 @@ export interface Cell {
     status: CellStatus;
     x: number;
     y: number;
-    type?: Tetrimoni;
+    type?: Tetromino;
 }
 
 export interface Playground {
@@ -15,7 +15,7 @@ export interface Playground {
 }
 
 export interface Active {
-    tetrimoni: Tetrimoni;
+    tetromino: Tetromino;
     rotation: number;
     x: number;
     y: number;
@@ -25,6 +25,6 @@ export interface Game {
     playground: Playground;
     cells: Cell[];
     active: Active;
-    queue: Tetrimoni[];
+    queue: Tetromino[];
     cleared: number;
 }
