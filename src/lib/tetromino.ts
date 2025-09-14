@@ -35,9 +35,9 @@ export const resolveBlock = (block: Pick<Active, "tetrimoni" | "rotation">): num
                     ];
                 case 3:
                     return [
-                        [1, 1, 0, 0],
-                        [0, 1, 0, 0],
-                        [0, 1, 0, 0],
+                        [1, 1, 1, 0],
+                        [1, 0, 0, 0],
+                        [0, 0, 0, 0],
                         [0, 0, 0, 0],
                     ];
             }
