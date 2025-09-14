@@ -2,6 +2,43 @@ import { Active, Cell, CellStatus, Game, Playground } from "@/types/game";
 import { bounds, drop } from "./collision";
 import { resolveBlock } from "./tetromino";
 
+export const projectBlock = (block: Pick<Active, "tetromino" | "rotation">): Cell[][] => {
+    const field = resolveBlock(block);
+
+    const width = field.length;
+    const [initial] = field;
+
+    if (!initial) {
+        return [[]];
+    }
+
+    const height = initial.length;
+
+    if (!height) {
+        return [[]];
+    }
+
+    const map: Cell[][] = Array.from({ length: width }).map((_, y) =>
+        Array.from({ length: height }).map((_, x) => ({
+            x,
+            y,
+            status: "empty" as CellStatus,
+        }))
+    );
+
+    field.forEach((row, y) => {
+        row.forEach((value, x) => {
+            map[y][x] = {
+                ...map?.[y]?.[x],
+                status: value ? "active" : map?.[y]?.[x]?.status,
+                type: value ? block.tetromino : undefined,
+            };
+        });
+    });
+
+    return map;
+};
+
 export const projectActive = (active: Active, playground: Playground): Cell[][] => {
     const field = resolveBlock(active);
 
@@ -25,7 +62,7 @@ export const projectActive = (active: Active, playground: Playground): Cell[][] 
             map[newY][newX] = {
                 ...map?.[newY]?.[newX],
                 status: value ? "active" : map?.[newY]?.[newX]?.status,
-                type: value ? active.tetrimoni : undefined,
+                type: value ? active.tetromino : undefined,
             };
         });
     });

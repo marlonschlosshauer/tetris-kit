@@ -7,6 +7,7 @@ import { Blocks } from "@/components/Fields/Blocks/Blocks";
 import { Ghost } from "@/components/Fields/Ghost/Ghost";
 import { Input } from "@/components/Input/Input";
 import { Playground } from "@/components/Playground/Playground";
+import { Preview } from "@/components/Preview/Preview";
 import { Tick } from "@/components/Tick/Tick";
 import { Provider, ProviderProps } from "@/provider";
 
@@ -25,6 +26,10 @@ const Base: FC<TetrisProps> = props => {
                 <Ghost />
                 <Active />
             </Playground>
+            <Preview.Base>
+                <Preview.UpNext />
+                <Preview.Rest />
+            </Preview.Base>
         </Provider>
     );
 };
