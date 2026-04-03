@@ -1,36 +1,109 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# tetris-kit
+
+A composable Tetris implementation for React, organized as a [Turborepo](https://turborepo.dev) monorepo.
+
+## Project Structure
+
+```
+apps/
+  demo/         → Next.js app showcasing the kit
+packages/
+  kit/          → @tetris-kit/kit — the core Tetris library
+```
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev       # starts all apps in dev mode
+npm run build     # builds all packages and apps
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Using `@tetris-kit/kit`
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Quick Start
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Drop in a Tetris game with a single component:
 
-## Learn More
+```tsx
+import { Tetris } from "@tetris-kit/kit";
 
-To learn more about Next.js, take a look at the following resources:
+export default function App() {
+    return <Tetris />;
+}
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+This renders the playfield, active piece, ghost piece, placed blocks, a piece preview, and keyboard input out of the box.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Custom Layout
 
-## Deploy on Vercel
+Use `Tetris.*` to compose your own layout from individual pieces:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```tsx
+import { Tetris } from "@tetris-kit/kit";
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+export default function App() {
+    return (
+        <Tetris.Provider>
+            <Tetris.Input />
+            <Tetris.Playground>
+                <Tetris.Background />
+                <Tetris.Blocks />
+                <Tetris.Ghost />
+                <Tetris.Active />
+            </Tetris.Playground>
+        </Tetris.Provider>
+    );
+}
+```
+
+### Accessing Game State
+
+Use the `useTetris` hook inside a `Tetris.Provider` to read game state:
+
+```tsx
+import { Tetris, useTetris } from "@tetris-kit/kit";
+
+function ScoreDisplay() {
+    const { cleared } = useTetris();
+    return <p>Lines cleared: {cleared}</p>;
+}
+
+export default function App() {
+    return (
+        <Tetris.Provider>
+            <ScoreDisplay />
+            {/* ... */}
+        </Tetris.Provider>
+    );
+}
+```
+
+### Custom Styling
+
+Pass `classNames` to override default styles:
+
+```tsx
+<Tetris classNames={{ playground: "my-playground", cell: { base: "my-cell" } }} />
+```
+
+### Props
+
+| Prop         | Type                                             | Description                |
+| ------------ | ------------------------------------------------ | -------------------------- |
+| `playground` | `{ rows: number; columns: number }`              | Board dimensions           |
+| `classNames` | `{ playground?: string; cell?: CellClassNames }` | CSS class overrides        |
+| `cells`      | `Cell[]`                                         | Initial cell state         |
+| `queue`      | `Tetromino[]`                                    | Initial piece queue        |
+| `active`     | `Active`                                         | Initial active piece       |
+| `cleared`    | `number`                                         | Initial cleared line count |
+
+### Exports
+
+| Export                                                            | Description                                                                                                  |
+| ----------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
+| `Tetris`                                                          | All-in-one component, also exposes `.Provider`, `.Input`, `.Tick`, `.Playground`, `.Background`, `.Active`, `.Ghost`, `.Blocks` |
+| `Provider`                                                        | Game + visual context provider                                                                               |
+| `useTetris`                                                       | Hook to access game and visual state                                                                         |
+| `TetrisProps`, `ProviderProps`, `ProviderData`                    | Component prop types                                                                                         |
+| `Tetromino`, `Cell`, `CellStatus`, `Active`, `Playground`, `Game` | Game model types                                                                                             |

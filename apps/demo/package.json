@@ -1,0 +1,27 @@
+{
+    "name": "@tetris-kit/demo",
+    "version": "0.0.1",
+    "private": true,
+    "scripts": {
+        "dev": "next dev",
+        "build": "next build",
+        "start": "next start",
+        "lint": "next lint"
+    },
+    "dependencies": {
+        "@tetris-kit/kit": "*",
+        "next": "^16.2.2",
+        "react": "^19.2.4",
+        "react-dom": "^19.2.4"
+    },
+    "devDependencies": {
+        "@eslint/eslintrc": "^3",
+        "@limegrass/eslint-plugin-import-alias": "^1.5.2",
+        "@types/node": "^20",
+        "@types/react": "^19.2.14",
+        "@types/react-dom": "^19.2.3",
+        "eslint": "^9.35.0",
+        "eslint-config-next": "15.3.3",
+        "typescript": "^5"
+    }
+}

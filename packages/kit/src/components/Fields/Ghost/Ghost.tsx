@@ -1,0 +1,25 @@
+import { FC, Fragment } from "react";
+import { Block } from "../../Block/Block";
+import { projectGhost } from "../../../lib/projection";
+import { useTetris } from "../../../provider";
+
+export const Ghost: FC = () => {
+    const { active, playground, cells } = useTetris();
+
+    if (!active || !playground) {
+        return null;
+    }
+
+    const map = projectGhost(active, playground, cells);
+
+    return (
+        <Fragment>
+            {map.flatMap(row =>
+                row.flatMap(
+                    cell =>
+                        cell.status === "ghost" && <Block key={`${cell.x}-${cell.y}`} {...cell} />
+                )
+            )}
+        </Fragment>
+    );
+};
