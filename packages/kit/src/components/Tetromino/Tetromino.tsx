@@ -55,9 +55,9 @@ const Wrapper: FC<PropsWithClassName<PropsWithChildren<TetrominoCellProps>>> = (
     }
 
     return (
-        <div className={styles.outer}>
+        <div className={clsx("tetris-kit-tetromino", styles.outer)}>
             <div
-                className={clsx(styles.inner, className)}
+                className={clsx("tetris-kit-tetromino-grid", styles.inner, className)}
                 style={{
                     gridTemplateRows: `repeat(${rows}, 1fr)`,
                     gridTemplateColumns: `repeat(${columns}, 1fr)`,

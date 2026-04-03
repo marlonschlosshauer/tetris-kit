@@ -1,5 +1,7 @@
-.wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
+@layer tetris-kit {
+    .wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
 }

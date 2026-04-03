@@ -1,9 +1,11 @@
-.outer {
-    display: flex;
-}
+@layer tetris-kit {
+    .outer {
+        display: flex;
+    }
 
-.inner {
-    display: grid;
-    grid-template-rows: repeat(4, 1fr);
-    grid-template-columns: repeat(4, 1fr);
+    .inner {
+        display: grid;
+        grid-template-rows: repeat(4, 1fr);
+        grid-template-columns: repeat(4, 1fr);
+    }
 }

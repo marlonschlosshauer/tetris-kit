@@ -1,4 +1,6 @@
-.wrapper {
-    display: grid;
-    isolation: isolate;
+@layer tetris-kit {
+    .wrapper {
+        display: grid;
+        isolation: isolate;
+    }
 }

@@ -1,25 +1,27 @@
-.cell {
-    width: 24px;
-    height: 24px;
-    border: 1px solid white;
-}
+@layer tetris-kit {
+    .cell {
+        width: 24px;
+        height: 24px;
+        border: 1px solid white;
+    }
 
-.active {
-    background-color: blue;
-    border-color: blue;
-}
+    .active {
+        background-color: blue;
+        border-color: blue;
+    }
 
-.filled {
-    background-color: darkblue;
-    border-color: darkblue;
-}
+    .filled {
+        background-color: darkblue;
+        border-color: darkblue;
+    }
 
-.empty {
-    background-color: lightblue;
-    border-color: darkgrey;
-}
+    .empty {
+        background-color: lightblue;
+        border-color: darkgrey;
+    }
 
-.ghost {
-    background-color: red;
-    border-color: red;
+    .ghost {
+        background-color: red;
+        border-color: red;
+    }
 }

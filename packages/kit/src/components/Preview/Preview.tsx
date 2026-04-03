@@ -6,7 +6,7 @@ import { PropsWithClassName } from "../../types/app";
 import styles from "./Preview.module.css";
 
 export const Base: FC<PropsWithChildren<PropsWithClassName>> = ({ className, children }) => {
-    return <div className={clsx(styles.wrapper, className)}>{children}</div>;
+    return <div className={clsx("tetris-kit-preview", styles.wrapper, className)}>{children}</div>;
 };
 
 export const UpNext: FC<PropsWithClassName> = ({ className }) => {

@@ -30,6 +30,7 @@ export const Cell: FC<PropsWithClassName<CellProps>> = ({
     return (
         <div
             className={clsx(
+                "tetris-kit-cell",
                 styles.cell,
                 type && styles[type],
                 status && styles[status],

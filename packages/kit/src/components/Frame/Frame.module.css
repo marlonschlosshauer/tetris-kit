@@ -1,20 +1,22 @@
-/* @todo: Remove z-index once projection is optimised */
-.cell {
-    z-index: 1;
-}
+@layer tetris-kit {
+    /* @todo: Remove z-index once projection is optimised */
+    .cell {
+        z-index: 1;
+    }
 
-.active {
-    z-index: 4;
-}
+    .active {
+        z-index: 4;
+    }
 
-.ghost {
-    z-index: 3;
-}
+    .ghost {
+        z-index: 3;
+    }
 
-.filled {
-    z-index: 2;
-}
+    .filled {
+        z-index: 2;
+    }
 
-.empty {
-    z-index: 1;
+    .empty {
+        z-index: 1;
+    }
 }

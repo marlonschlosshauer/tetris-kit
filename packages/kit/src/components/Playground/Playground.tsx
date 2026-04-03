@@ -21,7 +21,7 @@ export const Playground: FC<PropsWithChildren<PropsWithClassName>> = ({ classNam
 
     return (
         <section
-            className={clsx(styles.wrapper, className, classNames.playground)}
+            className={clsx("tetris-kit-playground", styles.wrapper, className, classNames.playground)}
             style={{
                 gridTemplateRows: `repeat(${rows}, 1fr)`,
                 gridTemplateColumns: `repeat(${columns}, 1fr)`,

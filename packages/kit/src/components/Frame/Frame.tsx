@@ -17,7 +17,7 @@ export const Frame: FC<PropsWithChildren<PropsWithClassName<FrameProps>>> = ({
             data-x={x}
             data-y={y}
             id={`${status}-${x}-${y}`}
-            className={`${styles.cell} ${styles[status]} ${className}`}
+            className={`tetris-kit-frame ${styles.cell} ${styles[status]} ${className}`}
             style={{ gridRow: y + 1, gridColumn: x + 1 }}>
             {children}
         </div>
