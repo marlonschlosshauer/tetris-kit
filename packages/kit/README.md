@@ -1,17 +1,17 @@
-# @tetris-kit/kit
+# tetris-kit
 
 A composable, fully styleable Tetris engine for React.
 
 ## Quick Start
 
 ```bash
-npm install @tetris-kit/kit
+npm install tetris-kit
 ```
 
 Drop in a complete Tetris game with a single component:
 
 ```tsx
-import { Tetris } from "@tetris-kit/kit";
+import { Tetris } from "tetris-kit";
 
 export default function App() {
     return <Tetris />;
@@ -25,7 +25,7 @@ This renders the playfield, active piece, ghost piece, placed blocks, a piece pr
 Use `Tetris.*` to compose your own layout from individual pieces:
 
 ```tsx
-import { Tetris } from "@tetris-kit/kit";
+import { Tetris } from "tetris-kit";
 
 export default function App() {
     return (
@@ -61,7 +61,7 @@ export default function App() {
 Use the `useTetris` hook inside a `Tetris.Provider` to read game state:
 
 ```tsx
-import { Tetris, useTetris } from "@tetris-kit/kit";
+import { Tetris, useTetris } from "tetris-kit";
 
 function ScoreDisplay() {
     const { cleared } = useTetris();

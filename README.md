@@ -3,14 +3,14 @@
 A composable Tetris engine for React.
 
 ```tsx
-import { Tetris } from "@tetris-kit/kit";
+import { Tetris } from "tetris-kit";
 
 export default function App() {
     return <Tetris />;
 }
 ```
 
-See [`@tetris-kit/kit`](packages/kit/README.md) for full documentation on custom layouts, game state, and styling.
+See [`tetris-kit`](packages/kit/README.md) for full documentation on custom layouts, game state, and styling.
 
 ## Project Structure
 
@@ -18,7 +18,7 @@ See [`@tetris-kit/kit`](packages/kit/README.md) for full documentation on custom
 apps/
   demo/         → Next.js app showcasing the kit
 packages/
-  kit/          → @tetris-kit/kit — the core Tetris library
+  kit/          → tetris-kit — the core Tetris library
 ```
 
 ## Getting Started

@@ -1,4 +1,4 @@
-import { Tetris } from "@tetris-kit/kit";
+import { Tetris } from "tetris-kit";
 import styles from "./page.module.css";
 
 export default function Home() {
