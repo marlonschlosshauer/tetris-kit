@@ -3,6 +3,7 @@
 A composable Tetris engine for React.
 
 ```tsx
+import "tetris-kit/styles.css";
 import { Tetris } from "tetris-kit";
 
 export default function App() {
