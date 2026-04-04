@@ -1,27 +1,85 @@
 @layer tetris-kit {
     .cell {
-        width: 24px;
-        height: 24px;
-        border: 1px solid white;
+        width: 28px;
+        height: 28px;
+        border-radius: 3px;
+        border: 1px solid transparent;
+    }
+
+    /* --- Status --- */
+
+    .empty {
+        background-color: rgba(255, 255, 255, 0.03);
+        border-color: rgba(255, 255, 255, 0.06);
     }
 
     .active {
-        background-color: blue;
-        border-color: blue;
+        border-color: rgba(255, 255, 255, 0.3);
     }
 
     .filled {
-        background-color: darkblue;
-        border-color: darkblue;
-    }
-
-    .empty {
-        background-color: lightblue;
-        border-color: darkgrey;
+        border-color: rgba(255, 255, 255, 0.15);
     }
 
     .ghost {
-        background-color: red;
-        border-color: red;
+        border-style: dashed;
+    }
+
+    /* --- Tetromino types (classic colors) --- */
+
+    .i {
+        background-color: #00e5ff;
+    }
+    .i.ghost {
+        background-color: rgba(0, 229, 255, 0.35);
+        border-color: rgba(0, 229, 255, 0.6);
+    }
+
+    .o {
+        background-color: #ffd600;
+    }
+    .o.ghost {
+        background-color: rgba(255, 214, 0, 0.35);
+        border-color: rgba(255, 214, 0, 0.6);
+    }
+
+    .t {
+        background-color: #d500f9;
+    }
+    .t.ghost {
+        background-color: rgba(213, 0, 249, 0.35);
+        border-color: rgba(213, 0, 249, 0.6);
+    }
+
+    .s {
+        background-color: #00e676;
+    }
+    .s.ghost {
+        background-color: rgba(0, 230, 118, 0.35);
+        border-color: rgba(0, 230, 118, 0.6);
+    }
+
+    .z {
+        background-color: #ff1744;
+    }
+    .z.ghost {
+        background-color: rgba(255, 23, 68, 0.35);
+        border-color: rgba(255, 23, 68, 0.6);
+    }
+
+    .j {
+        background-color: #2979ff;
+    }
+    .j.ghost {
+        background-color: rgba(41, 121, 255, 0.35);
+        border-color: rgba(41, 121, 255, 0.6);
+    }
+
+    .l {
+        background-color: #ff9100;
+    }
+    .l.ghost {
+        background-color: rgba(255, 145, 0, 0.35);
+        border-color: rgba(255, 145, 0, 0.6);
     }
 }

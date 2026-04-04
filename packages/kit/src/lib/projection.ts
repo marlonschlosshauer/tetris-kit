@@ -105,7 +105,7 @@ export const projectGhost = (active: Active, playground: Playground, cells: Cell
 
     const field = resolveBlock(droppedActive);
 
-    const map = Array.from({ length: playground.rows }).map((_, y) =>
+    const map: Cell[][] = Array.from({ length: playground.rows }).map((_, y) =>
         Array.from({ length: playground.columns }).map((_, x) => ({
             x,
             y,
@@ -125,6 +125,7 @@ export const projectGhost = (active: Active, playground: Playground, cells: Cell
             map[newY][newX] = {
                 ...map?.[newY]?.[newX],
                 status: value ? "ghost" : map?.[newY]?.[newX]?.status,
+                type: value ? droppedActive.tetromino : undefined,
             };
         });
     });
