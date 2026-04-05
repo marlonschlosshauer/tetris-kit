@@ -1,9 +1,11 @@
 {
     "name": "tetris-kit",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "license": "MIT",
     "type": "module",
-    "files": ["dist"],
+    "files": [
+        "dist"
+    ],
     "exports": {
         ".": {
             "types": "./dist/index.d.ts",
