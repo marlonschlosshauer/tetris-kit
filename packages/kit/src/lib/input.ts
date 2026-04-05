@@ -28,6 +28,7 @@ export const useInput = () => {
                 case "ArrowDown":
                     return dispatch({ type: "DOWN" });
                 case " ":
+                    e.preventDefault();
                     return dispatch({ type: "DROP" });
             }
         },
