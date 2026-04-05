@@ -1,11 +1,6 @@
-@layer tetris-kit {
+@layer tetris-kit.layout {
     .wrapper {
         display: grid;
         isolation: isolate;
-        gap: 1px;
-        padding: 8px;
-        background-color: #0a0a0f;
-        border-radius: 6px;
-        border: 1px solid rgba(255, 255, 255, 0.08);
     }
 }

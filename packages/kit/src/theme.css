@@ -1,0 +1,102 @@
+@layer tetris-kit.theme {
+    /* --- Cell --- */
+
+    .tetris-kit-cell {
+        border-radius: 3px;
+        border: 1px solid transparent;
+    }
+
+    .tetris-kit-empty {
+        background-color: rgba(255, 255, 255, 0.03);
+        border-color: rgba(255, 255, 255, 0.06);
+    }
+
+    .tetris-kit-active {
+        border-color: rgba(255, 255, 255, 0.3);
+    }
+
+    .tetris-kit-filled {
+        border-color: rgba(255, 255, 255, 0.15);
+    }
+
+    .tetris-kit-ghost {
+        border-style: dashed;
+    }
+
+    /* Tetromino type colors */
+
+    .tetris-kit-i {
+        background-color: #00e5ff;
+    }
+    .tetris-kit-i.tetris-kit-ghost {
+        background-color: rgba(0, 229, 255, 0.35);
+        border-color: rgba(0, 229, 255, 0.6);
+    }
+
+    .tetris-kit-o {
+        background-color: #ffd600;
+    }
+    .tetris-kit-o.tetris-kit-ghost {
+        background-color: rgba(255, 214, 0, 0.35);
+        border-color: rgba(255, 214, 0, 0.6);
+    }
+
+    .tetris-kit-t {
+        background-color: #d500f9;
+    }
+    .tetris-kit-t.tetris-kit-ghost {
+        background-color: rgba(213, 0, 249, 0.35);
+        border-color: rgba(213, 0, 249, 0.6);
+    }
+
+    .tetris-kit-s {
+        background-color: #00e676;
+    }
+    .tetris-kit-s.tetris-kit-ghost {
+        background-color: rgba(0, 230, 118, 0.35);
+        border-color: rgba(0, 230, 118, 0.6);
+    }
+
+    .tetris-kit-z {
+        background-color: #ff1744;
+    }
+    .tetris-kit-z.tetris-kit-ghost {
+        background-color: rgba(255, 23, 68, 0.35);
+        border-color: rgba(255, 23, 68, 0.6);
+    }
+
+    .tetris-kit-j {
+        background-color: #2979ff;
+    }
+    .tetris-kit-j.tetris-kit-ghost {
+        background-color: rgba(41, 121, 255, 0.35);
+        border-color: rgba(41, 121, 255, 0.6);
+    }
+
+    .tetris-kit-l {
+        background-color: #ff9100;
+    }
+    .tetris-kit-l.tetris-kit-ghost {
+        background-color: rgba(255, 145, 0, 0.35);
+        border-color: rgba(255, 145, 0, 0.6);
+    }
+
+    /* --- Playground --- */
+
+    .tetris-kit-playground {
+        gap: 1px;
+        padding: 8px;
+        background-color: #0a0a0f;
+        border-radius: 6px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    /* --- Preview --- */
+
+    .tetris-kit-preview {
+        padding: 12px;
+        background-color: #0a0a0f;
+        border-radius: 6px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+}

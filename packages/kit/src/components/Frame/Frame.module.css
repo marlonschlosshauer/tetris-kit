@@ -1,5 +1,4 @@
-@layer tetris-kit {
-    /* @todo: Remove z-index once projection is optimised */
+@layer tetris-kit.layout {
     .cell {
         z-index: 1;
     }

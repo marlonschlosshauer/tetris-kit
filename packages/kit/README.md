@@ -11,8 +11,8 @@ npm install tetris-kit
 Drop in a complete Tetris game with a single component:
 
 ```tsx
-import "tetris-kit/styles.css";
 import { Tetris } from "tetris-kit";
+import "tetris-kit/styles.css";
 
 export default function App() {
     return <Tetris />;
@@ -26,8 +26,8 @@ This renders the playfield, active piece, ghost piece, placed blocks, a piece pr
 Use `Tetris.*` to compose your own layout from individual pieces:
 
 ```tsx
-import "tetris-kit/styles.css";
 import { Tetris } from "tetris-kit";
+import "tetris-kit/styles.css";
 
 export default function App() {
     return (
@@ -63,8 +63,8 @@ export default function App() {
 Use the `useTetris` hook inside a `Tetris.Provider` to read game state:
 
 ```tsx
-import "tetris-kit/styles.css";
 import { Tetris, useTetris } from "tetris-kit";
+import "tetris-kit/styles.css";
 
 function ScoreDisplay() {
     const { cleared } = useTetris();
@@ -101,11 +101,36 @@ export default function App() {
 
 ## Styling
 
-There are three ways to style tetris-kit, and they can be combined.
+The CSS is split into two files: **layout** (structural) and **theme** (visual).
 
-### 1. CSS with default classes
+### Stylesheets
 
-Every component renders a default class you can target directly:
+| Import                  | Description                                              |
+| ----------------------- | -------------------------------------------------------- |
+| `tetris-kit/styles.css` | Both layout + theme (recommended for most users)         |
+| `tetris-kit/layout.css` | Structural only: grid, flex, z-index, sizing             |
+| `tetris-kit/theme.css`  | Visual only: colors, borders, backgrounds, border-radius |
+
+To use the default look, import `styles.css`:
+
+```tsx
+import "tetris-kit/styles.css";
+```
+
+To bring your own visual styles, import only `layout.css` and write your own theme:
+
+```tsx
+import "tetris-kit/layout.css";
+import "./my-theme.css";
+```
+
+All built-in styles live inside CSS layers (`tetris-kit.layout` and `tetris-kit.theme`), so your styles always take priority without `!important` or specificity hacks.
+
+### Classes
+
+Every component renders classes you can target directly in CSS:
+
+**Component classes:**
 
 | Class                        | Element                  |
 | ---------------------------- | ------------------------ |
@@ -116,23 +141,64 @@ Every component renders a default class you can target directly:
 | `.tetris-kit-tetromino`      | Tetromino outer wrapper  |
 | `.tetris-kit-tetromino-grid` | Tetromino grid layout    |
 
-All built-in styles live inside a `@layer tetris-kit` CSS layer, so your styles will always take priority without needing `!important` or specificity hacks:
+**Status classes** (on cells):
+
+| Class                | Status         |
+| -------------------- | -------------- |
+| `.tetris-kit-empty`  | Empty cell     |
+| `.tetris-kit-active` | Falling piece  |
+| `.tetris-kit-filled` | Placed block   |
+| `.tetris-kit-ghost`  | Ghost/shadow   |
+
+**Tetromino type classes** (on cells):
+
+| Class            | Piece |
+| ---------------- | ----- |
+| `.tetris-kit-i`  | I     |
+| `.tetris-kit-o`  | O     |
+| `.tetris-kit-t`  | T     |
+| `.tetris-kit-s`  | S     |
+| `.tetris-kit-z`  | Z     |
+| `.tetris-kit-j`  | J     |
+| `.tetris-kit-l`  | L     |
+
+Example — a Game Boy inspired theme using only layout + custom CSS:
 
 ```css
-/* Your styles automatically win over the library defaults */
 .tetris-kit-cell {
-    width: 32px;
-    height: 32px;
-    border-radius: 4px;
+    width: 22px;
+    border: 1px solid #0f380f;
+    border-radius: 0;
 }
 
-.tetris-kit-playground {
-    gap: 2px;
-    background: #111;
+.tetris-kit-empty {
+    background-color: #0f380f;
+}
+
+.tetris-kit-active {
+    background-color: #9bbc0f;
+}
+
+.tetris-kit-filled {
+    background-color: #8bac0f;
+}
+
+.tetris-kit-ghost {
+    background-color: #306230;
 }
 ```
 
-### 2. Class overrides via props
+### Data attributes
+
+Cells also expose `data-status` and `data-type` attributes as an alternative to classes:
+
+```css
+.tetris-kit-cell[data-type="i"][data-status="ghost"] {
+    background-color: rgba(0, 255, 255, 0.3);
+}
+```
+
+### Class overrides via props
 
 Pass `classNames` to the `<Tetris>` component (or `<Tetris.Provider>`) to add classes through React:
 
@@ -146,17 +212,6 @@ Pass `classNames` to the `<Tetris>` component (or `<Tetris.Provider>`) to add cl
             filled: "my-filled-cell",
             ghost: "my-ghost-cell",
             empty: "my-empty-cell",
-        },
-    }}
-/>
-```
-
-The `cell` classNames also accept tetromino type keys (`o`, `i`, `l`, `j`, `s`, `z`, `t`) to style cells by piece type:
-
-```tsx
-<Tetris
-    classNames={{
-        cell: {
             o: "text-yellow-500",
             i: "text-cyan-500",
             t: "text-purple-500",
@@ -165,7 +220,7 @@ The `cell` classNames also accept tetromino type keys (`o`, `i`, `l`, `j`, `s`, 
 />
 ```
 
-### 3. Per-component `className`
+### Per-component `className`
 
 When using the composable API, each component that renders a DOM element accepts a `className` prop:
 
@@ -179,16 +234,6 @@ When using the composable API, each component that renders a DOM element accepts
     </Tetris.Playground>
 </Tetris.Provider>
 ```
-
-### Combining approaches
-
-All three methods work together. The final class list on a cell element looks like:
-
-```
-tetris-kit-cell [module styles] [className prop] [classNames overrides]
-```
-
-This means `classNames` overrides take highest priority in the cascade, followed by `className`, with the default module styles as the baseline (in the `tetris-kit` layer).
 
 ## Exports
 

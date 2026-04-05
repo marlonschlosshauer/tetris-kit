@@ -31,9 +31,9 @@ export const Cell: FC<PropsWithClassName<CellProps>> = ({
         <div
             className={clsx(
                 "tetris-kit-cell",
+                status && `tetris-kit-${status}`,
+                type && `tetris-kit-${type}`,
                 styles.cell,
-                type && styles[type],
-                status && styles[status],
                 className,
                 type && classNames[type],
                 status && classNames[status]

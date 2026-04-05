@@ -1,0 +1,41 @@
+.page {
+    display: grid;
+    place-items: center;
+    min-height: 100svh;
+    background-color: white;
+    image-rendering: pixelated;
+}
+
+.main {
+    display: flex;
+    gap: 24px;
+    padding: 32px;
+}
+
+.page :global(.tetris-kit-playground) {
+    background-color: lightgray;
+}
+
+.page :global(.tetris-kit-cell) {
+    background-color: lightgray;
+}
+
+.page :global(.tetris-kit-empty) {
+    background-color: lightgray;
+}
+
+.page :global(.tetris-kit-active) {
+    background-color: white;
+}
+
+.page :global(.tetris-kit-filled) {
+    background-color: black;
+}
+
+.page :global(.tetris-kit-ghost) {
+    background-color: black;
+}
+
+.page :global(.tetris-kit-preview) {
+    background-color: black;
+}

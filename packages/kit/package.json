@@ -9,10 +9,12 @@
             "types": "./dist/index.d.ts",
             "import": "./dist/index.js"
         },
-        "./styles.css": "./dist/index.css"
+        "./styles.css": "./dist/styles.css",
+        "./layout.css": "./dist/layout.css",
+        "./theme.css": "./dist/theme.css"
     },
     "scripts": {
-        "build": "vite build",
+        "build": "vite build && cp src/theme.css dist/theme.css && cp src/styles.css dist/styles.css",
         "dev": "vite build --watch",
         "lint": "tsc --noEmit",
         "check-types": "tsc --noEmit"
