@@ -1,8 +1,8 @@
 import { FC, Fragment, PropsWithChildren } from "react";
 import clsx from "clsx";
-import { Tetromino } from "../Tetromino/Tetromino";
 import { useTetris } from "../../provider";
 import { PropsWithClassName } from "../../types/app";
+import { Tetromino } from "../Tetromino/Tetromino";
 import styles from "./Preview.module.css";
 
 export const Base: FC<PropsWithChildren<PropsWithClassName>> = ({ className, children }) => {
@@ -45,11 +45,7 @@ export const Nth: FC<PropsWithClassName<{ nth: number }>> = ({ nth, className })
     if (!target) {
         return null;
     }
-    return (
-        <Fragment>
-            <Tetromino className={className} tetromino={target} />
-        </Fragment>
-    );
+    return <Tetromino className={className} tetromino={target} />;
 };
 
 export const Preview = {

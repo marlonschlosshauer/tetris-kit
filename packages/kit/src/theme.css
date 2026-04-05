@@ -1,6 +1,4 @@
 @layer tetris-kit.theme {
-    /* --- Cell --- */
-
     .tetris-kit-cell {
         border-radius: 3px;
         border: 1px solid transparent;
@@ -22,8 +20,6 @@
     .tetris-kit-ghost {
         border-style: dashed;
     }
-
-    /* Tetromino type colors */
 
     .tetris-kit-i {
         background-color: #00e5ff;
@@ -81,22 +77,14 @@
         border-color: rgba(255, 145, 0, 0.6);
     }
 
-    /* --- Playground --- */
-
     .tetris-kit-playground {
         gap: 1px;
         padding: 8px;
         background-color: #0a0a0f;
-        border-radius: 6px;
-        border: 1px solid rgba(255, 255, 255, 0.08);
     }
-
-    /* --- Preview --- */
 
     .tetris-kit-preview {
         padding: 12px;
         background-color: #0a0a0f;
-        border-radius: 6px;
-        border: 1px solid rgba(255, 255, 255, 0.08);
     }
 }

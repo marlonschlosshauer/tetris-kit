@@ -10,6 +10,7 @@ import { Input } from "../Input/Input";
 import { Playground } from "../Playground/Playground";
 import { Preview } from "../Preview/Preview";
 import { Tick } from "../Tick/Tick";
+import styles from "./Tetris.module.css";
 
 export interface TetrisProps extends ProviderProps {
     hasInput?: boolean;
@@ -19,18 +20,20 @@ export interface TetrisProps extends ProviderProps {
 const Base: FC<TetrisProps> = ({ hasInput = true, hasTick = true, ...props }) => {
     return (
         <Provider {...props}>
-            {hasInput && <Input />}
-            {hasTick && <Tick />}
-            <Playground>
-                <Background />
-                <Blocks />
-                <Ghost />
-                <Active />
-            </Playground>
-            <Preview.Base>
-                <Preview.UpNext />
-                <Preview.Rest />
-            </Preview.Base>
+            <div className={styles.content}>
+                {hasInput && <Input />}
+                {hasTick && <Tick />}
+                <Playground>
+                    <Background />
+                    <Blocks />
+                    <Ghost />
+                    <Active />
+                </Playground>
+                <Preview.Base>
+                    <Preview.UpNext />
+                    <Preview.Rest />
+                </Preview.Base>
+            </div>
         </Provider>
     );
 };
